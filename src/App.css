@@ -1,0 +1,51 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes animationpulse {
+  10% {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  30% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80vw;
+}
+
+.user-card {
+
+  margin: 2rem;
+  width: 200px;
+  height: 200px;
+
+}
+
+.user-card img {
+  height: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.animation {
+  animation: infinite 1.5s animationpulse;
+}
