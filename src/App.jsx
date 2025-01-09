@@ -3,53 +3,57 @@ import anon from "/anon.png";
 import "./App.css";
 
 UserCard.propTypes = {
-  username: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  status: PropTypes.bool.isRequired,
-  src: PropTypes.string,
+  options: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    status: PropTypes.bool.isRequired,
+    src: PropTypes.string,
+  }),
 };
 
 function App() {
   return (
     <div className="container">
-      <UserCard 
-        username="John Doe"
-        backgroundColor="#734b6d"
-        status="true"
-        src="https://plus.unsplash.com/premium_photo-1689539137236-b68e436248de"
+      <UserCard
+        options={{
+          username: "John Doe",
+          backgroundColor: "#348F50",
+          status: "true",
+          src: "https://plus.unsplash.com/premium_photo-1689539137236-b68e436248de",
+        }}
       />
       <UserCard
-        username="Jane Doe"
-        backgroundColor="#3a6073"
-        status="falsqwee"
-        src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6"
+        options={{
+          username: "Johnatan Doe",
+          backgroundColor: "#24574F",
+          status: "false",
+          src: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6",
+        }}
       />
       <UserCard
-        username="Johnatan Doe"
-        backgroundColor="#4CA1AF"
-        status="true"
+        options={{
+          username: "Pedro Joya",
+          backgroundColor: "#56B4D3",
+          status: "true",
+        }}
       />
     </div>
   );
 }
 
-
-
-function UserCard({ username, backgroundColor, status, src }) {
-  const hasSource = src !== undefined;
+function UserCard({ options }) {
+  const hasSource = options.src !== undefined;
 
   return (
     <div
-      className={`user-card ${status == "true" ? "animation" : ""}`}
-      style={{ backgroundColor: backgroundColor, padding: "20px" }}
+      className={`user-card ${options.status == "true" ? "animation" : ""}`}
+      style={{ backgroundColor: options.backgroundColor, padding: "20px" }}
     >
-      <img src={hasSource ? src : anon} alt={username} />
-      <h2>{username}</h2>
+      <img src={hasSource ? options.src : anon} alt={options.username} />
+      <h2>{options.username}</h2>
     </div>
   );
 }
-
-
 
 /*
  * La principal diferencia entre es el espacio que ocupa, pero realmente hacen
